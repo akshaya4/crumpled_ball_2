@@ -4,6 +4,8 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+var dustbinObj, paperObject,groundObject;	
+var world;
 
 function preload()
 {
@@ -13,7 +15,7 @@ function preload()
 function setup() {
 	createCanvas(800, 700);
 
-
+        rectMode(CENTER);
 	
 	 
 	//paper=createSprite(50,650);
@@ -25,9 +27,19 @@ function setup() {
 
 	//Create the Bodies Here.
 
-	 paper=new 	Paper(200,450,70);
-	 ground1=new Ground(400,670,800,10);
-	 bottom=new dustbin(600,650,100,20);
+	 paperObject=new Paper(200,450,70);
+	 groundObject=new Ground(400,670,800,10);
+	 dustbinObj=new dustbin(600,650,100,20);
+	
+	var render = Render.create({
+	  element: document.body,
+	  engine: engine,
+	  options: {
+	    width: 1600,
+	    height: 700,
+	    wireframes: false
+	  }
+	});
 
 	Engine.run(engine);
   
@@ -36,12 +48,12 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background(0);
+  background(230);
   
   drawSprites();
- paper.display();
- ground1.display();
- bottom.display();
+ paperObject.display();
+ groundObject.display();
+ dustbinObj.display();
 }
 
 function keyPressed(){
