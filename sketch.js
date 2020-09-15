@@ -43,7 +43,7 @@ function setup() {
 	});
 
 	Engine.run(engine);
-  
+        Render.run(render);
 }
 
 
